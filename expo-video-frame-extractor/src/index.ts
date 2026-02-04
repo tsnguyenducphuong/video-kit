@@ -1,9 +1,9 @@
 import VideoFrameExtractorModule from './VideoFrameExtractorModule';
-import { ExtractionRequest } from './VideoFrameExtractorModule.types'; 
+import { ExtractionRequest,VideoFrame } from './VideoFrameExtractorModule.types'; 
 
 /**
  * Extracts frames from a video file at specific timestamps.
- * * @param options - Configuration object including URI and timestamps.
+ * * @param options - Configuration object including video URI and timestamps.
  * @returns A promise that resolves to an array of VideoFrame objects.
  */
 export async function extractVideoFrames(options: ExtractionRequest): Promise<VideoFrame[]> {

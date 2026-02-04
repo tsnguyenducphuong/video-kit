@@ -2,7 +2,7 @@ import { NativeModule, requireNativeModule } from 'expo';
 
 import { VideoFrameExtractorModuleEvents } from './VideoFrameExtractorModule.types';
 
-import {ExtractionRequest} from './VideoFrameExtractorModule.types'
+import {ExtractionRequest,VideoFrame} from './VideoFrameExtractorModule.types'
 
 declare class VideoFrameExtractorModule extends NativeModule<VideoFrameExtractorModuleEvents> {
   PI: number;
