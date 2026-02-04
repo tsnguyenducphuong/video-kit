@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-video-frame-extractor": ["../src/index"],
+      "expo-video-frame-extractor/*": ["../src/*"]
+    }
+  }
+}
