@@ -29,7 +29,9 @@ public class VideoFrameExtractorModule: Module {
       let generator = AVAssetImageGenerator(asset: asset)
       
       // Precision settings
+      // --- Quality Improvements ---
       generator.appliesPreferredTrackTransform = true
+      generator.maximumSize = .zero // Force full-resolution extraction
       generator.requestedTimeToleranceBefore = .zero
       generator.requestedTimeToleranceAfter = .zero
 

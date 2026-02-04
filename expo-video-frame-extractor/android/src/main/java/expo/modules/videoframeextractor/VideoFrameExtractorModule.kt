@@ -1,17 +1,18 @@
 package expo.modules.videoframeextractor
 
+import android.graphics.Bitmap
+import android.media.MediaMetadataRetriever
+import android.net.Uri
+import android.os.Build
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import java.net.URL  
-import android.media.MediaMetadataRetriever
-import android.graphics.Bitmap
-import android.net.Uri
+import java.net.URL 
+import expo.modules.kotlin.records.Field
+import expo.modules.kotlin.records.Record
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*  
- 
-import expo.modules.kotlin.records.Field    
-import expo.modules.kotlin.records.Record   
+import java.util.*
+
  
 
 class VideoFrameExtractorModule : Module() {
@@ -47,12 +48,20 @@ class VideoFrameExtractorModule : Module() {
                 val uri = Uri.parse(request.videoUri)
                 retriever.setDataSource(context, uri)
 
+                // 1. Get original video dimensions to prevent blurry thumbnails
+                val originalWidth = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)?.toInt() ?: 0
+                val originalHeight = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)?.toInt() ?: 0
+
                 for (timeMs in request.timestamps) {
                     val timeUs = (timeMs * 1000).toLong()
                     
                     // Native extraction at the specific timestamp
-                    val bitmap = retriever.getFrameAtTime(timeUs, MediaMetadataRetriever.OPTION_CLOSEST)
-                        ?: continue
+                    // 2. High-Quality Extraction Logic
+                    val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1 && originalWidth > 0) {
+                        retriever.getScaledFrameAtTime(timeUs, MediaMetadataRetriever.OPTION_CLOSEST, originalWidth, originalHeight)
+                    } else {
+                        retriever.getFrameAtTime(timeUs, MediaMetadataRetriever.OPTION_CLOSEST)
+                    } ?: continue
 
                     // Determine file extension and format
                     val isPng = request.format.lowercase() == "png"
