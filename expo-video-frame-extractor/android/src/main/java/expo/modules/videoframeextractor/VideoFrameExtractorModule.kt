@@ -37,7 +37,7 @@ class VideoFrameExtractorModule : Module() {
       "Hello world! 👋"
     }
 
-    AsyncFunction("extractFrames") { request: ExtractionRequest ->
+    AsyncFunction("extractVideoFrames") { request: ExtractionRequest ->
             val retriever = MediaMetadataRetriever()
             val results = mutableListOf<VideoFrame>()
             val context = appContext.reactContext ?: throw Exception("React context is unavailable")

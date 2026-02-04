@@ -15,5 +15,5 @@ export async function extractVideoFrames(options: ExtractionRequest): Promise<Vi
     format: options.format ?? 'png',
   };
 
-  return await VideoFrameExtractorModule.extractFrames(sortedRequest);
+  return await VideoFrameExtractorModule.extractVideoFrames(sortedRequest);
 }

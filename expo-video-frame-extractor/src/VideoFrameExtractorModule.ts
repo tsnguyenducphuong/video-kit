@@ -8,7 +8,7 @@ declare class VideoFrameExtractorModule extends NativeModule<VideoFrameExtractor
   PI: number;
   hello(): string;
   setValueAsync(value: string): Promise<void>; 
-  extractFrames(request: ExtractionRequest): Promise<VideoFrame[]>;
+  extractVideoFrames(request: ExtractionRequest): Promise<VideoFrame[]>;
 }
 
 // This call loads the native module object from the JSI.

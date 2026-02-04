@@ -20,7 +20,7 @@ public class VideoFrameExtractorModule: Module {
   public func definition() -> ModuleDefinition {
     Name("VideoFrameExtractor")
 
-    AsyncFunction("extractFrames") { (request: ExtractionRequest, promise: Promise) in
+    AsyncFunction("extractVideoFrames") { (request: ExtractionRequest, promise: Promise) in
       guard let url = request.videoUri else {
         return promise.reject("ERR_INVALID_URI", "The provided video URI is null or invalid.")
       }
