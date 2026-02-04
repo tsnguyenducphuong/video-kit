@@ -1,7 +1,7 @@
 import ExpoModulesCore
 import AVFoundation
 
-/ 1. Updated Records with default values
+
 struct ExtractionRequest: Record {
   @Field var videoUri: URL? = nil
   @Field var timestamps: [Double] = []
