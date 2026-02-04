@@ -1,6 +1,6 @@
 {
   "name": "expo-video-frame-extractor",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "High performance Expo Module To Extract Video Frames",
   "main": "build/index.js",
   "types": "build/index.d.ts",

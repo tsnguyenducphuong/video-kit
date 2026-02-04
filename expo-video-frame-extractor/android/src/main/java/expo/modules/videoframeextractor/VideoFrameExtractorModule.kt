@@ -59,7 +59,7 @@ class VideoFrameExtractorModule : Module() {
                     val extension = if (isPng) "png" else "jpg"
                     val file = File(context.cacheDir, "frame_${UUID.randomUUID()}.$extension")
 
-                    val qualityInt = (request.quality * 100).toInt.coerceIn(0,100)
+                    val qualityInt = (request.quality * 100).toInt().coerceIn(0,100)
                     
                     FileOutputStream(file).use { out ->
                         val compressFormat = if (isPng) {
@@ -120,7 +120,7 @@ class VideoFrameExtractorModule : Module() {
 class ExtractionRequest(
     @Field var timestamps: List<Double> = emptyList(),
     @Field var videoUri: String = "",
-    @Field var quality: Int = 100,
+    @Field var quality: Double = 1.0,
     @Field var format: String = "png"
 ) : Record
 
