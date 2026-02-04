@@ -2,7 +2,7 @@
   "expo": {
     "name": "expo-video-frame-extractor-example",
     "slug": "expo-video-frame-extractor-example",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
